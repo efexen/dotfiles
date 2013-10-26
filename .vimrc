@@ -50,8 +50,31 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-" Mah plugins "
-
+" fuzzy searching "
 Bundle 'kien/ctrlp.vim'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+" File Nav "
+Bundle 'scrooloose/nerdtree'
+
+" Silver searcher "
+Bundle 'rking/ag.vim'
+set grepprg=ag\ --nogroup\ --nocolor
+map <Leader>s :Ag ''<Left>
+
+" tab completion "
+Bundle 'ervandew/supertab'
+
+" syntax checker '
+Bundle 'scrooloose/syntastic'
+
+" Git "
+Bundle 'tpope/vim-fugitive'
+
+" Rails "
+Bundle 'tpope/vim-rails'
+
+" Google music control <3 "
+Bundle 'bassnode/vim-google-play'
 
 filetype plugin indent on
