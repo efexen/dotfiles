@@ -1,8 +1,5 @@
 set nocompatible
 
-color molokai
-let g:molokai_original = 1
-
 " Learn to use vim properly. you muppet
 nnoremap <Left> :echoe "Use h. you muppet"<CR>
 nnoremap <Right> :echoe "Use l. you muppet"<CR>
@@ -41,40 +38,51 @@ set showcmd
 set laststatus=2
 set backspace=indent,eol,start
 
+set splitbelow
+set splitright
+
 syntax on
 
 " Plugin stuffs "
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
-" fuzzy searching "
-Bundle 'kien/ctrlp.vim'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+Plugin 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'rking/ag.vim'
+Plugin 'ervandew/supertab'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'bassnode/vim-google-play'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-endwise'
+Plugin 'chriskempson/base16-vim'
+Plugin 'scrooloose/nerdcommenter.git'
 
-" File Nav "
-Bundle 'scrooloose/nerdtree'
+Plugin 'elixir-lang/vim-elixir'
 
-" Silver searcher "
-Bundle 'rking/ag.vim'
 set grepprg=ag\ --nogroup\ --nocolor
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 map <Leader>s :Ag ''<Left>
 
-" tab completion "
-Bundle 'ervandew/supertab'
+map <C-S-t> :tabnew<CR>
 
-" syntax checker '
-Bundle 'scrooloose/syntastic'
-
-" Git "
-Bundle 'tpope/vim-fugitive'
-
-" Rails "
-Bundle 'tpope/vim-rails'
-
-" Google music control <3 "
-Bundle 'bassnode/vim-google-play'
-
+call vundle#end()
 filetype plugin indent on
+
+syntax enable
+
+if has("gui_running")
+  set background=dark
+  colorscheme material-theme
+  set guioptions -=m
+  set guioptions -=T
+  set guioptions -=r
+else
+  colorscheme molokai
+  set background=light
+endif
